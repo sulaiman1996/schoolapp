@@ -17,20 +17,16 @@ import { TeacherDetailComponent } from './masters/teacher/teacher-detail/teacher
 import { MastereditComponent } from './masters/masters/masteredit/masteredit.component';
 import { MastersComponent } from './masters/masters/masters/masters.component';
 import { RegisterUserComponent } from './auth/register-user/register-user.component';
-import { TestaggridComponent } from './aggrid/testaggrid/testaggrid.component';
 import { StudentDetailComponent } from './masters/student/student-detail/student-detail.component';
-import { AggridtestComponent } from './aggridtest/aggridtest.component';
 import { AuthGuard } from './auth/service/auth.guard';
 import { AuthGuardRoles } from './auth/service/auth.guard.roles';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DivisionComponent } from './masters/divisions/division/division.component';
 import { StudentComponent } from './masters/student/student/student.component';
-import { StudentlistComponent } from './masters/student/studentlist/studentlist.component';
 import { LoginUserComponent } from './auth/login-user/login-user.component';
 import { SelectorComponent } from './tools/selector/selector.component';
 import { MasterComponent } from './masters/masters/master/master.component';
-import { TeacherlistComponent } from './masters/teacher/teacherlist/teacherlist.component';
 import { MarksentryComponent } from './trans/marks/marksentry/marksentry.component';
 import { CharttestComponent } from './report/charttest/charttest.component';
 import { StudentListComponent } from './masters/student/student-list/student-list.component';
@@ -78,10 +74,7 @@ const routes: Routes = [
     component: SelectorComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'example',
-    component: TestaggridComponent
-  },
+  
   {
     path: 'students',
     component: StudentListComponent,

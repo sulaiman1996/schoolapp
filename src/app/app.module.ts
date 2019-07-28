@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/service/auth.guard';
 import { AuthGuardRoles } from './auth/service/auth.guard.roles';
 import { TokenInterceptorService } from './auth/service/token-interceptor.service';
-import { AgGridModule } from 'ag-grid-angular';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { DivisionComponent } from './masters/divisions/division/division.component';
@@ -24,13 +23,8 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule,
   MatSnackBarModule, MatPaginatorModule, MatDatepickerModule, MatNativeDateModule , MatDialogModule,
   MatGridListModule, MatMenuModule } from '@angular/material';
 import { StudentComponent } from './masters/student/student/student.component';
-import { AggridtestComponent } from './aggridtest/aggridtest.component';
 // import { AgGridModule } from 'ag-grid-angular/main';
-import { CustomizedCellComponent } from './aggrid/customized-cell/customized-cell.component';
 import { StudentDetailComponent } from './masters/student/student-detail/student-detail.component';
-import { StudentlistComponent } from './masters/student/studentlist/studentlist.component';
-import { TestaggridComponent } from './aggrid/testaggrid/testaggrid.component';
-import { CustomcellComponent } from './aggrid/customcell/customcell.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RegisterUserComponent } from './auth/register-user/register-user.component';
 import { LoginUserComponent } from './auth/login-user/login-user.component';
@@ -64,7 +58,6 @@ import { AttendanceTakenComponent } from './report/attendance-taken/attendance-t
 import { TeacherAttendanceComponent } from './trans/teacher-attendance/teacher-attendance.component';
 import { AttendanceTeachersComponent } from './report/attendance-teachers/attendance-teachers.component';
 import { TeacherListComponent } from './masters/teacher/teacher-list/teacher-list.component';
-import { TeacherlistComponent } from './masters/teacher/teacherlist/teacherlist.component';
 import { ImportStudentComponent } from './masters/student/import-student/import-student.component';
 import { MsterCreateComponent } from './masters/school/mster-create/mster-create.component';
 import { SchoolMasterComponent } from './masters/school/school-master/school-master.component';
@@ -88,19 +81,13 @@ import { TaskReportComponent } from './report/task-report/task-report.component'
     AppComponent,
     DivisionComponent,
     StudentComponent,
-    AggridtestComponent,
-    CustomizedCellComponent,
     StudentDetailComponent,
-    StudentlistComponent,
-    TestaggridComponent,
-    CustomcellComponent,
     RegisterUserComponent,
     LoginUserComponent,
     SelectorComponent,
     MastersComponent,
     MasterComponent,
     MastereditComponent,
-    TeacherlistComponent,
     TeacherDetailComponent,
     AttendanceComponent,
     MarksentryComponent,
@@ -167,7 +154,6 @@ import { TaskReportComponent } from './report/task-report/task-report.component'
     MatGridListModule,
     MatMenuModule,
     BrowserAnimationsModule, ChartsModule,
-    AgGridModule.withComponents([CustomizedCellComponent]),
     DeviceDetectorModule.forRoot()
   ],
   providers: [AuthService, AuthGuard, AuthGuardRoles, EventService,
@@ -178,7 +164,6 @@ import { TaskReportComponent } from './report/task-report/task-report.component'
       multi: true
     }, DatePipe],
   entryComponents: [
-    CustomcellComponent,
     TimesheetSummaryDialogComponent,
     AttendanceSummaryComponent,
     TaskAssignComponent,

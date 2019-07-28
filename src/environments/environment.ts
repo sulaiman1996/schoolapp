@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //  debug: true,
-   debug: false,
+   debug: true,
+  //  debug: false,
   serverpath:  'http://localhost:8080/'
 };
 
