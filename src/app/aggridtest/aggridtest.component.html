@@ -1,0 +1,9 @@
+<button mat-raised-button color="primary" routerLink="/studentdetail/__new">Create New </button>
+
+<div class="col-12">
+    <ag-grid-angular style="width: 100%;height: 400px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" [columnDefs]="columnDefs" [enableSorting]="true" [enableFilter]="true" [animateRows]="true" [pagination]="true" [rowSelection]="single" [paginationPageSize]="10"
+        [sortingOrder]="sortingOrder" [enableColResize]="true" [frameworkComponents]="frameworkComponents" (rowClicked)="onRowClicked($event)" [rowMultiSelectWithClick]="true">
+        <!-- [rowDragManaged]="true" -->
+    </ag-grid-angular>
+</div>
+<button (click)="getRow()">Get row data</button>

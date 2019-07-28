@@ -1,0 +1,16 @@
+<div class="row mt-5">
+    <div class="col-md-2 mb-3" *ngFor="let master of masters">
+        <div class="card text-center">
+            <div class="card-body">
+                <!-- <h5 class="card-title">{{master.param}}</h5> -->
+                <!-- <p class="card-text">{{master.name}}</p> -->
+                <!-- <a href="#" class="btn btn-primary"> {{master.name}}</a> -->
+                <button class="btn btn-primary" (click)="masterLinks(master)">{{master.name}}</button>
+
+            </div>
+            <!-- <div class="card-footer text-muted">
+                {{event.date | date:'shortDate'}}
+            </div> -->
+        </div>
+    </div>
+</div>

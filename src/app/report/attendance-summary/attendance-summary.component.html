@@ -1,0 +1,25 @@
+<body>
+    <!-- <div style="background-color: slategray; color: azure"> -->
+    <!-- <h4 mat-dialog-title></h4> -->
+    <!-- <div style="font-weight: bold; font-size: 13px"> -->
+    <mat-label class="mat-label" style="font-weight: bold; font-size: 13px;text-align: center" *ngIf="data.length>0"> {{data.length}} days absent in {{monthNames[data[0]._id.month-1]}} </mat-label>
+    <mat-label class="mat-label" *ngIf="data.length===0"> Present all days </mat-label>
+    <!-- </div> -->
+    <!-- <div mat-dialog-content> -->
+    <ul>
+        <li *ngFor="let element of data; " style="font-size:11px">
+            <mat-label> {{element._id.date}}
+            </mat-label>
+            <mat-label>{{dayName[element.dayOfWeek-1]}}</mat-label>
+            <mat-label> {{element.periods}}</mat-label>
+        </li>
+    </ul>
+    <!-- <mat-label>Total: {{data.length}}</mat-label> -->
+    <!-- </div> -->
+    <!-- <div mat-dialog-actions> -->
+    <button mat-button class="button" (click)="onNoClick() ">OK</button>
+    <!-- <br> -->
+    <!-- <button mat-button [mat-dialog-close]="msgpassed " cdkFocusInitial>OK</button> -->
+    <!-- </div> -->
+    <!-- </div> -->
+</body>

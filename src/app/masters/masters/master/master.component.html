@@ -1,0 +1,25 @@
+<br>
+<h3>{{this.master.name}}</h3>
+<button mat-raised-button color="accent" (click)="navigateBack()">Back</button>&nbsp;
+<button mat-raised-button color="primary" (click)="naviageMaster('')">Create New </button>
+
+<!-- [routerLink]="['/category', category, page ]" -->
+<div class="row mt-5">
+    <div class="col-md-3 mb-3" *ngFor="let master of masters">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 *ngIf="canSeeId" class="card-title" style="color: Red">{{master._id}}</h5>
+                <p class="card-text" style="color: blue ">{{master.name}}</p>
+                <!-- <a href="#" class="btn btn-primary">Edit {{master.name}}</a> -->
+                <!-- <button><mat-icon>home</mat-icon></button> -->
+                <!-- <button mat-icon-button>Click me!</button> -->
+
+                <!-- <mat-icon class="mat-icon-rtl-mirror" svgIcon="thumb-up"></mat-icon> -->
+            </div>
+            <div class="card-footer text-muted">
+                <button mat-raised-button style="background:burlywood" (click)="naviageMaster(master)">Edit</button>
+                <button class="btn btn-danger" (click)="delete(master)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

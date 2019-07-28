@@ -1,0 +1,146 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <div *ngIf="isSave">
+                <h3>Add Teacher/Management</h3>
+            </div>
+            <div *ngIf="!isSave">
+                <h3>Update Teacher/Management</h3>
+            </div>
+            <img #photo *ngIf="this.url" [src]="url" style=""> <br/>
+           
+            <button type="button" (click)="changePhoto()">Change Photo</button>&nbsp;
+
+        </section>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]="updateForm" class="edit-form" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Teacher Name" formControlName="name" required>
+                <mat-error *ngIf="!updateForm.controls['name'].valid && updateForm.controls['name'].touched">
+                    Teacher name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Designation" formControlName="designation" required>
+                <mat-error *ngIf="!updateForm.controls['designation'].valid && updateForm.controls['designation'].touched">
+                    Designation name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <input #pen matInput placeholder="PEN" formControlName="PEN" required>
+                <mat-error *ngIf="!updateForm.controls['PEN'].valid && updateForm.controls['PEN'].touched">
+                    PEN No is <strong>required and allow only number</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <input type="number" matInput placeholder="Order By" formControlName="orderby" required>
+                <mat-error *ngIf="!updateForm.controls['orderby'].valid && updateForm.controls['orderby'].touched">
+                    Order By is <strong>required and allow only number</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Gender" formControlName="myGender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender._id">{{gender.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['myGender'].valid && updateForm.controls['myGender'].touched">
+                    Gender is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Dial Code" autocomplete="off" formControlName="dialCode" (selectionChange)="onCountrySelection($event.value)">
+                    <mat-option *ngFor="let c of countries" [value]="c.dialCode">{{c.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            {{this.selected['dialCode']}}
+            <!-- {{this.updateForm.get('dialCode').value}} -->
+            <mat-form-field class="field-half-width">
+                <input matInput placeholder="Mobile No" formControlName="mobileNo" (change)="onMobileNoChange($event.target.value)" required>
+                <mat-error *ngIf="!updateForm.controls['mobileNo'].valid && updateForm.controls['mobileNo'].touched">
+                    Mobile number should of <strong>{{this.maxLength}}</strong> length and numbers only
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <input matInput placeholder="Address" formControlName="address" required>
+                <mat-error *ngIf="!updateForm.controls['address'].valid && updateForm.controls['address'].touched">
+                    Address No is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Section" formControlName="mySection">
+                    <mat-option *ngFor="let section of sections" [value]="section._id">{{section.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- <mat-form-field>
+                <mat-select placeholder="Religion" formControlName="myRelegion" (selectionChange)="changedReligion($event.value)">
+                    <mat-option *ngFor="let religion of religions" [value]="religion._id">{{religion.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Caste" formControlName="myCaste">
+                    <mat-option *ngFor="let caste of castesfiltered" [value]="caste._id">{{caste.name}}</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Classes" formControlName="myClasses" multiple>
+                    <mat-option *ngFor="let class of classes" [value]="class">{{class.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['myClasses'].valid && updateForm.controls['myClasses'].touched">
+                    Class is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Subjects" formControlName="mySubjects" multiple>
+                    <mat-option *ngFor="let subject of subjects" [value]="subject">{{subject.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['mySubjects'].valid && updateForm.controls['mySubjects'].touched">
+                    Subjects is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="!updateForm.controls['dob'].valid && updateForm.controls['dob'].touched">
+                    <strong>the date format dd/mm/yyyy</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="pickerto" placeholder="Date of join" formControlName="dateOfJoin">
+                <mat-datepicker-toggle matSuffix [for]="pickerto"></mat-datepicker-toggle>
+                <mat-datepicker #pickerto></mat-datepicker>
+                <mat-error *ngIf="!updateForm.controls['dateOfJoin'].valid && updateForm.controls['dateOfJoin'].touched">
+                    Date Of Join <strong>required and the date format dd/mm/yyyy</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Login" formControlName="myUser">
+                    <mat-option *ngFor="let user of users" [value]="user._id">{{user.email}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['myUser'].valid && updateForm.controls['myUser'].touched">
+                    Login is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+            <!-- <button type="button" class="close" aria-label="Close" (click)="onDeselectLogin()">
+                <span aria-hidden="true">×</span>
+            </button> -->
+            <div></div>
+            <mat-checkbox *ngIf="isSave" class="field-full-width" formControlName="loginAutoCreated" (change)="updateChecked($event)">Auto Create login </mat-checkbox>
+
+
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button color="accent" routerLink="/teachers">Back</button>&nbsp;
+            <button type="submit" (click)="update()" [disabled]="updateForm.pristine || updateForm.invalid " mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>

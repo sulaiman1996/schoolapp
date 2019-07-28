@@ -1,0 +1,191 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+    font: blue;
+}
+
+td.mat-column-date {
+    width: 30%;
+    /* padding-right: 8px; */
+    /* text-align: center; */
+}
+
+td.mat-column-subject {
+    width: 20%;
+    /* padding-right: 8px; */
+    text-align: left;
+}
+
+td.mat-column-body {
+    width: 50%;
+    /* padding-right: 8px; */
+    text-align: left;
+}
+
+.mat-header-cell {
+    background-color: darkblue;
+    color: yellow;
+    /* font-size: large; */
+    font-weight: bold;
+}
+
+.mat-input-flex.mat-form-field-flex {
+    border: 1px solid black;
+}
+
+.mat-header-row,
+.mat-row {
+    height: 35px;
+}
+
+.mat-cell {
+    color: blue;
+}
+
+.mat-row:hover {
+    background-color: mediumspringgreen;
+    /* color: darkkhaki; */
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+  text-align: left;
+} */
+
+button.mat-menu-item:hover {
+    background-color: blueviolet;
+    color: #fff !important;
+}
+
+h4 {
+    color: whitesmoke;
+    /* font-size: 15px; */
+    text-align: center;
+    /* text-decoration: underline;
+text-underline-position: under; */
+    /* padding-bottom: 9px; */
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+
+.example-card {
+    width: 20%;
+    height: auto;
+}
+
+body {
+    background: #D1D1D1;
+    text-align: center;
+}
+
+.card {
+    display: block;
+    background: #FFFFFF;
+    width: 94%;
+    height: 80px;
+    border-radius: 2px;
+    margin: 10px;
+    display: inline-block;
+    align-self: auto;
+    transition: all .25s linear;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.4);
+    /* border-left: 10px; */
+}
+
+.card:hover {
+    box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
+}
+
+.card1 {
+    width: 300px;
+}
+
+.card2 {
+    width: 625px;
+}
+
+.cardtitle {
+    width: 94%;
+    height: 125px;
+    text-align: justify;
+    text-shadow: 1px;
+    font-size: 12px;
+    /* font-weight: bold; */
+    color: yellow;
+    position: relative;
+    background: slategray;
+    /* border-right-width: 20px;
+  border-right-color: white; */
+    /* padding-right: 20px; */
+}
+
+div.card img {
+    width: 100px;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+.mat-icon {
+    position: relative;
+    /* border-color: beige; */
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    color: yellow;
+    /* margin-top: 5; */
+}
+
+.center {
+    text-align: left;
+    /* float: left; */
+    width: 100%;
+    height: 105px;
+    padding: 5px;
+    border: 1px solid gold;
+}
+
+
+/* div {
+    text-align: center;
+} */
+
+#container {
+    width: 100%;
+}
+
+#left {
+    float: left;
+    width: 200px;
+}
+
+#right {
+    float: right;
+    width: 100px;
+}
+
+#center {
+    margin: 0 auto;
+    width: 100px;
+}

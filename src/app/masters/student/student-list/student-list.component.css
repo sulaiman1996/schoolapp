@@ -1,0 +1,79 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+}
+
+td.mat-column-classNo {
+    width: 8%;
+    /* padding-right: 8px; */
+    /* text-align: center; */
+}
+
+td.mat-column-name {
+    width: 30%;
+    /* padding-right: 8px; */
+    text-align: left;
+}
+
+td.mat-column-class {
+    width: 30%;
+    /* padding-right: 8px; */
+    text-align: left;
+}
+
+td.mat-column-menu {
+    width: 22%;
+    /* padding-right: 8px; */
+    text-align: center;
+}
+
+th.mat-column-menu {
+    /* width: 20%; */
+    /* padding-right: 8px; */
+    text-align: center;
+}
+
+.mat-header-cell {
+    background-color: darkblue;
+    color: yellow;
+    /* font-size: large; */
+    font-weight: bold;
+}
+
+.mat-input-flex.mat-form-field-flex {
+    border: 1px solid black;
+}
+
+.mat-header-row,
+.mat-row {
+    height: 35px;
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+    text-align: left;
+} */
+
+button.mat-menu-item:hover {
+    background-color: blueviolet;
+    color: #fff !important;
+}

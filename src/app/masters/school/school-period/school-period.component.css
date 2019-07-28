@@ -1,0 +1,101 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+}
+
+td.mat-column-no {
+    width: 10%;
+    /* padding-right: 8px; */
+    /* text-align: center; */
+    font-size: 12px;
+}
+
+td.mat-column-name {
+    width: 30%;
+    /* padding-right: 8px; */
+    text-align: left;
+    font-size: 12px;
+}
+
+td.mat-column-from {
+    width: 20%;
+    /* padding-right: 8px; */
+    text-align: left;
+    font-size: 12px;
+}
+
+td.mat-column-to {
+    width: 20%;
+    /* padding-right: 8px; */
+    text-align: left;
+    font-size: 12px;
+}
+
+td.mat-column-options {
+    width: 20%;
+    /* padding-right: 8px; */
+    text-align: center;
+    font-size: 12px;
+}
+
+th.mat-column-options {
+    /* width: 20%; */
+    /* padding-right: 8px; */
+    text-align: center;
+}
+
+.mat-header-cell {
+    background-color: darkblue;
+    color: yellow;
+    /* font-size: large; */
+    font-weight: bold;
+    text-align: center;
+}
+
+.mat-input-flex.mat-form-field-flex {
+    border: 1px solid black;
+}
+
+.mat-header-row,
+.mat-row {
+    height: 35px;
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+text-align: left;
+} */
+
+button.mat-menu-item:hover {
+    background-color: blueviolet;
+    color: #fff !important;
+}
+
+h4 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.school-button-row button,
+.school-button-row a {
+    margin-right: 8px;
+}

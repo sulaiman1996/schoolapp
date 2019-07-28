@@ -1,0 +1,23 @@
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+        <!-- <mat-card>Simple card
+            <img mat-card-image src="./../../assets/home.ico" alt="Photo of a Shiba Inu">
+        </mat-card> -->
+<!-- <div class="card"></div>
+    </mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+
+    <mat-grid-tile>
+        <div class="card"></div>
+    </mat-grid-tile>
+    <mat-grid-tile>4
+
+    </mat-grid-tile>
+</mat-grid-list> -->
+<p></p>
+<div class="card cardtitle" *ngFor="let item of menuAccess" (click)="onItemClick($event, item)">
+    <mat-icon svgIcon="{{item.image}}"></mat-icon>
+    <!-- <img src="./../../assets/{{item.image}}" alt="Progress">  -->
+    {{item.title}}
+    <!-- <mat-icon svgIcon="rightarrow" style="left: 100px"></mat-icon> -->
+</div>

@@ -1,0 +1,66 @@
+<br>
+<button mat-raised-button (click)="navigateBack()" color="accent">Back</button> &nbsp;
+<input autocomplete="off" (keyup)="applyFilter($event.target.value)" placeholder="Search"> &nbsp;
+<button mat-raised-button color="primary" (click)="allDone()">All Done</button> &nbsp;
+<button type="submit" (click)="updateTaskAssign()" mat-raised-button color="primary">Save</button>&nbsp;
+
+<br>
+<p style="color: blue;text-decoration: underline;  text-align: center;font-weight: bold; text-shadow:2px 2px #adcf32">{{this.typeName}}</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="classNo">
+        <th mat-header-cell *matHeaderCellDef>No </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.student.classNo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name </th>
+        <td mat-cell *matCellDef="let element" [ngClass]="{
+          'finished' : element.assign.finished ,
+          'notFinished' : !element.assign.finished,
+          'closed' : element.assign.closed
+       }" style="text-align: left; font-size: 10px"> {{element.student.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef>Class </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.class.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="finished">
+        <th mat-header-cell *matHeaderCellDef> Finished </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.assign.finished?'Yes':'No'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="finishedon">
+        <th mat-header-cell *matHeaderCellDef>Finished On </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.finishedon}} </td>
+    </ng-container>
+    <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef>Options </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon svgIcon="more_vert"></mat-icon>
+              </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="edit($event, element)">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                    <span>Edit</span>
+                  </button>
+                <button mat-menu-item (click)="done($event, element)">
+                    <mat-icon *ngIf="!element.assign.finished" svgIcon="done"></mat-icon>
+                    <span *ngIf="!element.assign.finished">Done</span>
+                    <mat-icon *ngIf="element.assign.finished" svgIcon="undo"></mat-icon>
+                    <span *ngIf="element.assign.finished">Undo</span>
+                  </button>
+                <button mat-menu-item (click)="closeTask($event, element)">
+                    <mat-icon *ngIf="!element.assign.closed" svgIcon="close"></mat-icon>
+                    <mat-icon *ngIf="element.assign.closed" svgIcon="restore"></mat-icon>
+                    <span *ngIf="element.assign.closed"> Reopen   </span>
+                    <span *ngIf="!element.assign.closed"> Close   </span>
+                  </button>
+            </mat-menu>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+</table>
+<p></p>

@@ -1,0 +1,9 @@
+<div style="text-align: center;">
+    <input style="display: none" #fileUpload type="file" (change)="onFileSelect($event)" name="myfile">
+    <button type="button" (click)="fileUpload.click()">Pick photo</button>&nbsp;
+    <img style="align-content: center" #photo *ngIf="this.url" [src]="url"> <br/>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button (click)="upload()" [mat-dialog-close]="dialogData" cdkFocusInitial>Upload</button>
+    </div>
+</div>

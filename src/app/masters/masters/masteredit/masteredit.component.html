@@ -1,0 +1,47 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <div>
+                <h3 style="color: maroon">{{this.heading}} {{heading1}}</h3>
+            </div>
+        </section>
+        <!-- <mat-divider></mat-divider> -->
+        <br>
+        <form [formGroup]="updateForm" class="edit-form">
+            <mat-form-field *ngIf="canSeeId" class="field-full-width" style="color: Red">
+                <input matInput placeholder="Id" formControlName="_id" required>
+                <mat-error *ngIf="!updateForm.controls['_id'].valid && updateForm.controls['_id'].touched">
+                    Id is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Description" formControlName="name" required>
+                <mat-error *ngIf="!updateForm.controls['name'].valid && updateForm.controls['name'].touched">
+                    Description is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="addCombo">
+                <mat-select placeholder="{{this.master.combo.caption}}" formControlName="{{this.master.combo.comboField}}">
+                    <mat-option *ngFor="let c of combo" [value]="c._id">{{c.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="this.master.combo1">
+                <mat-select placeholder="{{this.master.combo1.caption}}" formControlName="{{this.master.combo1.comboField}}">
+                    <mat-option *ngFor="let c of combo1" [value]="c._id">{{c.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="field-full-width" *ngIf="master.addField">
+                <input matInput placeholder="{{this.master.addField.caption}}" formControlName="{{this.master.addField.name}}" required>
+                <mat-error *ngIf="!updateForm.controls[this.master.addField.name].valid && updateForm.controls[this.master.addField.name].touched">
+                    {{this.master.addField.caption}} is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button color="accent" (click)="navigateBack()">Back</button>&nbsp;
+            <button type="submit" (click)="update()" [disabled]="updateForm.pristine || updateForm.invalid || disableSave " mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>

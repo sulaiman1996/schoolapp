@@ -1,0 +1,293 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+.my-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.my-header {
+    min-height: 64px;
+    /* padding: 8px 24px 0; */
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    margin-top: -10px;
+    font-size: 10px;
+    font-style: italic;
+    background: slategrey;
+    /* padding: 8px 8px 8px 0; */
+}
+
+.mat-header-cell {
+    background: slateblue;
+    color: yellow;
+    font-size: 10px;
+    text-align: left;
+    padding-left: 5px !important;
+    /* padding-right: 5px !important; */
+}
+
+.mat-cell:first-child,
+mat-footer-cell:first-child,
+mat-header-cell:first-child {
+    padding-left: 5px !important;
+    /* padding-right: 5px !important; */
+}
+
+.mat-cell {
+    color: white;
+    font-size: 10px;
+    text-align: left;
+    /* display: flex;
+justify-content: center; */
+}
+
+.mat-header-row,
+.mat-row {
+    height: 25px;
+    width: auto;
+}
+
+th.mat-column-Name {
+    width: 35%;
+}
+
+th.mat-column-Total {
+    text-align: right;
+}
+
+td.mat-column-Total {
+    text-align: right;
+}
+
+th.mat-column-M01 {
+    text-align: right;
+}
+
+td.mat-column-M01 {
+    text-align: right;
+}
+
+th.mat-column-M02 {
+    text-align: right;
+}
+
+td.mat-column-M02 {
+    text-align: right;
+}
+
+th.mat-column-M03 {
+    text-align: right;
+}
+
+td.mat-column-M03 {
+    text-align: right;
+}
+
+th.mat-column-M04 {
+    text-align: right;
+}
+
+td.mat-column-M04 {
+    text-align: right;
+}
+
+th.mat-column-M05 {
+    text-align: right;
+}
+
+td.mat-column-M05 {
+    text-align: right;
+}
+
+th.mat-column-M06 {
+    text-align: right;
+}
+
+td.mat-column-M06 {
+    text-align: right;
+}
+
+th.mat-column-M07 {
+    text-align: right;
+}
+
+td.mat-column-M07 {
+    text-align: right;
+}
+
+th.mat-column-M08 {
+    text-align: right;
+}
+
+td.mat-column-M08 {
+    text-align: right;
+}
+
+th.mat-column-M09 {
+    text-align: right;
+}
+
+td.mat-column-M09 {
+    text-align: right;
+}
+
+th.mat-column-M10 {
+    text-align: right;
+}
+
+td.mat-column-M10 {
+    text-align: right;
+}
+
+th.mat-column-M11 {
+    text-align: right;
+}
+
+td.mat-column-M11 {
+    text-align: right;
+}
+
+th.mat-column-M12 {
+    text-align: right;
+}
+
+td.mat-column-M12 {
+    text-align: right;
+}
+
+h5 {
+    color: yellow;
+    font-size: 13px;
+    text-align: center;
+    /* text-decoration: underline;
+  text-underline-position: under; */
+    /* padding-bottom: 9px; */
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.mat-button {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    min-height: 20px;
+    vertical-align: top;
+    font-size: 10px;
+    padding: 0 0;
+    margin: 0;
+}
+
+.card {
+    display: block;
+    background: #FFFFFF;
+    width: 94%;
+    height: 80px;
+    border-radius: 2px;
+    margin: 10px;
+    display: inline-block;
+    align-self: auto;
+    transition: all .25s linear;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.4);
+    /* border-left: 10px; */
+}
+
+
+/* .card:hover {
+  box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
+} */
+
+.card1 {
+    width: 300px;
+}
+
+.card2 {
+    width: 625px;
+}
+
+.cardtitle {
+    width: 94%;
+    height: 125px;
+    text-align: justify;
+    text-shadow: 1px;
+    font-size: 12px;
+    /* font-weight: bold; */
+    color: white;
+    position: relative;
+    background: slategray;
+    box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
+    /* border-right-width: 20px;
+border-right-color: white; */
+    /* padding-right: 20px; */
+}
+
+div.card img {
+    width: 100px;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+h4 {
+    color: whitesmoke;
+    font-size: 18px;
+    text-align: center;
+    /* text-decoration: underline;
+text-underline-position: under; */
+    /* padding-bottom: 9px; */
+    text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px darkblue;
+}
+
+#container {
+    width: 100%;
+}
+
+#left {
+    float: left;
+    width: 100%;
+}
+
+#right {
+    float: right;
+    width: 100px;
+}
+
+#center {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.center {
+    text-align: center;
+    /* float: left; */
+    background: slateblue;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    border: 2px solid white;
+}
+
+.rowdata {
+    text-align: center;
+    /* float: left; */
+    width: 100%;
+    height: 20px;
+    /* padding: 5px; */
+    border: 1px solid white;
+}

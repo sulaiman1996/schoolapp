@@ -1,0 +1,108 @@
+<body>
+    <p></p>
+    <form [formGroup]="form" class="form">
+        <mat-form-field class="field-half-width">
+            <mat-select placeholder="Section" formControlName="mySection">
+                <mat-option *ngFor="let section of sections" [value]="section._id">{{section.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!form.controls['mySection'].valid && form.controls['mySection'].touched">
+                Section is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="field-half-width">
+            <mat-select placeholder="Leave Type" formControlName="leaveType">
+                <mat-option *ngFor="let type of leaveTypes" [value]="type._id.name">{{type._id.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!form.controls['leaveType'].valid && form.controls['leaveType'].touched">
+                Leave Type is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="field-half-width">
+            <input matInput type="number" placeholder="Year" formControlName="year">
+            <mat-error *ngIf="!form.controls['year'].valid && form.controls['year'].touched">
+                Year is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button (click)="teacherAttendance()" [disabled]="form.invalid" color="accent" style="margin-left: 16px;">Go</button>
+
+
+    </form>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="Name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button style="text-align: left; font-size: 10px" (click)="attendanceForOneTeacher($event, element)">{{element.Name}}</button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="M01">
+                <th mat-header-cell *matHeaderCellDef>Jan</th>
+                <td mat-cell *matCellDef="let element">{{element.M01}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M02">
+                <th mat-header-cell *matHeaderCellDef>Feb</th>
+                <td mat-cell *matCellDef="let element">{{element.M02}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M03">
+                <th mat-header-cell *matHeaderCellDef>Mar</th>
+                <td mat-cell *matCellDef="let element">{{element.M03}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M04">
+                <th mat-header-cell *matHeaderCellDef>Apr</th>
+                <td mat-cell *matCellDef="let element">{{element.M04}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M05">
+                <th mat-header-cell *matHeaderCellDef>May</th>
+                <td mat-cell *matCellDef="let element">{{element.M05}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M06">
+                <th mat-header-cell *matHeaderCellDef>Jun</th>
+                <td mat-cell *matCellDef="let element">{{element.M06}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M07">
+                <th mat-header-cell *matHeaderCellDef>Jul</th>
+                <td mat-cell *matCellDef="let element">{{element.M07}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M08">
+                <th mat-header-cell *matHeaderCellDef>Aug</th>
+                <td mat-cell *matCellDef="let element">{{element.M08}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M09">
+                <th mat-header-cell *matHeaderCellDef>Sep</th>
+                <td mat-cell *matCellDef="let element">{{element.M09}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M10">
+                <th mat-header-cell *matHeaderCellDef>Oct</th>
+                <td mat-cell *matCellDef="let element">{{element.M10}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M11">
+                <th mat-header-cell *matHeaderCellDef>Nov</th>
+                <td mat-cell *matCellDef="let element">{{element.M11}} </td>
+            </ng-container>
+            <ng-container matColumnDef="M12">
+                <th mat-header-cell *matHeaderCellDef>Dec</th>
+                <td mat-cell *matCellDef="let element">{{element.M12}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Total">
+                <th mat-header-cell *matHeaderCellDef>Total</th>
+                <td mat-cell *matCellDef="let element">{{element.Total}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+        </table>
+    </div>
+    <p></p>
+    <h5>
+        {{message}}
+    </h5>
+    <div *ngIf="this.showCard" class="card cardtitle" [ngStyle]="{'height':cardHeight + 'px'}  ">
+        <div class="center" style="color: yellow; font-weight:bold ">{{cardHead}}</div>
+        <div id="container " *ngFor="let item of attForTeacher ">
+            <div class="rowdata "> {{item.dates}} {{dayName[item.dayOfWeek-1]}} {{item.atten.description}}</div>
+        </div>
+    </div>
+</body>

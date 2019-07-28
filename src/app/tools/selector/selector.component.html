@@ -1,0 +1,45 @@
+<br> User:
+<h4> {{username}} </h4>
+User category:
+<h4>{{userType}}</h4>
+<div>
+    <br>
+    <mat-card>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="blinking" *ngIf="showMessage">{{message}}</div>
+        <form [formGroup]="form" class="edit-form">
+            <mat-form-field>
+                <mat-select placeholder="Academic Year" formControlName="academic" (selectionChange)="changedReligion($event)">
+                    <mat-option *ngFor="let academic of academics" [value]="academic._id">{{academic.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['academic'].valid && form.controls['academic'].touched">
+                    Academic Year is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="showClass">
+                <mat-select placeholder="Class" formControlName="myClass">
+                    <mat-option *ngFor="let class of classes" [value]="class._id">{{class.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['myClass'].valid && form.controls['myClass'].touched">
+                    Class is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="showStudent">
+                <mat-select placeholder="Student" formControlName="student">
+                    <mat-option *ngFor="let student of students" [value]="student._id">{{student.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['student'].valid && form.controls['student'].touched">
+                    student is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <br><br>
+            <!-- <button mat-raised-button color="accent" routerLink="/students">Back</button>&nbsp; -->
+            <button type="submit" (click)="updateData()" [disabled]="form.pristine || form.invalid" mat-raised-button color="primary">OK</button>
+            <!-- <button type="submit" (click)="updateStudent()" mat-raised-button color="primary">Save</button> -->
+        </form>
+    </mat-card>
+</div>

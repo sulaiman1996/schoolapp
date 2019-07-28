@@ -1,0 +1,84 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+}
+
+
+/* .table-container {
+    margin-top: 10px;
+    max-height: 100px;
+    overflow: auto;
+} */
+
+.mat-header-row,
+.mat-row {
+    height: 35px;
+}
+
+td.mat-column-classNo {
+    width: 13%;
+    /* padding-right: 8px; */
+}
+
+td.mat-column-attendance {
+    width: 15%;
+    /* padding-right: 8px; */
+    text-align: center;
+}
+
+th.mat-column-attendance {
+    /* width: 20%; */
+    /* padding-right: 8px; */
+    text-align: center;
+}
+
+.mat-header-cell {
+    background-color: darkblue;
+    color: yellow;
+    /* font-size: large; */
+    font-weight: bold;
+}
+
+.mat-row:hover {
+    background-color: goldenrod;
+}
+
+.blinking {
+    animation: blinkingText 1.0s infinite;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: blue;
+    }
+    25% {
+        color: transparent;
+    }
+    50% {
+        color: transparent;
+    }
+    75% {
+        color: transparent;
+    }
+    100% {
+        color: blue;
+    }
+}

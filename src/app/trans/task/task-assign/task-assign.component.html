@@ -1,0 +1,40 @@
+<!-- <h4 mat-dialog-title></h4> -->
+<div style="font-weight: bold; font-size: 13px">
+    <!-- <mat-label *ngIf="absetees.length>0">Period {{message['period']}}</mat-label> Absentees ({{absetees.length}})</div> -->
+    <div mat-dialog-content>
+        <form [formGroup]="form" class="form">
+            <mat-checkbox placeholder="Finished" formControlName="finished" (change)="updateChecked($event)">Finished</mat-checkbox>
+            <mat-form-field class="field-3d-width">
+                <input matInput [matDatepicker]="picker" placeholder="Finished on" formControlName="finishedon">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="!form.controls['finishedon'].valid && form.controls['finishedon'].touched">
+                    <strong>the date format dd/mm/yyyy</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="this.assign.amount">
+                <input matInput type="number" placeholder="Amount" formControlName="amount" autocomplete="off" required>
+                <mat-error *ngIf="!form.controls['amount'].valid && form.controls['amount'].touched">
+                    Amount is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="this.assign.amount">
+                <input matInput type="number" placeholder="penalty" formControlName="penalty" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="!this.assign.amount">
+                <input matInput type="number" placeholder="Grade" formControlName="grade" autocomplete="off">
+                <mat-error *ngIf="!form.controls['grade'].valid && form.controls['grade'].touched
+                || form.controls['grade'].hasError('max')">
+                    Grade must be between 0 and {{this.assign.totalGrade}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width ">
+                <input matInput placeholder="Remark" formControlName="remark" autocomplete="off ">
+            </mat-form-field>
+        </form>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick() ">Cancel</button>
+        <button mat-button (click)="update() " [disabled]="form.invalid" [mat-dialog-close]="msgpassed " cdkFocusInitial>Save</button>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <h5>{{heading}}</h5>
+        </section>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]="form" class="edit-form">
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Notice Subject" formControlName="subject" required>
+                <mat-error *ngIf="!form.controls['subject'].valid && form.controls['subject'].touched">
+                    Notice Subject name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="picker" placeholder="Open On" formControlName="openOn" [errorStateMatcher]="matcher">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="!form.controls['openOn'].valid && form.controls['openOn'].touched">
+                    <strong>the date format dd/mm/yyyy</strong>
+                </mat-error>
+                <mat-error *ngIf="form.hasError('notValid')">
+                    Open date less than or equal to close date
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="pickerClose" placeholder="Close On" formControlName="closedOn" [errorStateMatcher]="matcher">
+                <mat-datepicker-toggle matSuffix [for]="pickerClose"></mat-datepicker-toggle>
+                <mat-datepicker #pickerClose></mat-datepicker>
+                <mat-error *ngIf="!form.controls['closedOn'].valid && form.controls['closedOn'].touched">
+                    <strong>the date format dd/mm/yyyy</strong>
+                </mat-error>
+                <mat-error *ngIf="form.hasError('notValid')">
+                    Open date less than or equal to close date
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Class" formControlName="myClass">
+                    <mat-option *ngFor="let class of classes" [value]="class._id">{{class.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['myClass'].valid && form.controls['myClass'].touched">
+                    Class is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Priority" formControlName="priority">
+                    <mat-option *ngFor="let p of priority" [value]="p">{{p}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!form.controls['priority'].valid && form.controls['priority'].touched">
+                    Priority is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-full-width">
+                <!-- <input matInput placeholder="Notice Body" formControlName="noticeBody" required> -->
+
+                <textarea matInput rows="7" placeholder="Notice" formControlName="noticeBody" required></textarea>
+                <!-- <textarea matInput placeholder="Content" formControlName="content" required> -->
+                <mat-error *ngIf="!form.controls['noticeBody'].valid && form.controls['noticeBody'].touched">
+                    Content is <strong>required </strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button (click)="navigateBack()" color="accent">Back</button>&nbsp;
+            <button type="submit" (click)="update()" [disabled]="form.pristine || form.invalid || disableSave" mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>

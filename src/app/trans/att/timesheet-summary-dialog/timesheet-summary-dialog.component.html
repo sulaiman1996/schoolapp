@@ -1,0 +1,18 @@
+<div>
+    <!-- <h4 mat-dialog-title></h4> -->
+    <div style="font-weight: bold; font-size: 13px">
+        <mat-label *ngIf="absetees.length>0">Period {{message['period']}}</mat-label> Absentees ({{absetees.length}})</div>
+    <div mat-dialog-content>
+        <ul>
+            <li *ngFor="let element of absetees; " style="font-size:13px">
+                <mat-label> {{element.classNo}}. </mat-label>
+                <mat-label> {{element.name}}</mat-label>
+            </li>
+        </ul>
+        <!-- <mat-label>Total: {{data.length}}</mat-label> -->
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="msgpassed" cdkFocusInitial>Save</button>
+    </div>
+</div>

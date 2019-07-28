@@ -1,0 +1,43 @@
+<p>
+
+</p>
+<h4> Alerts</h4>
+<div *ngIf="showStudentCombo">
+    <form [formGroup]="form" class="edit-form">
+        <mat-form-field class="field-half-width">
+            <mat-select placeholder="Select your child" formControlName="myStudent" (selectionChange)="changedStudent($event)">
+                <mat-option *ngFor="let std of students" [value]="std">{{std.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!form.controls['myStudent'].valid && form.controls['myStudent'].touched">
+                Child is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</div>
+<div class="card cardtitle" [ngStyle]="{'height':cardHeight + 'px'} ">
+    <div *ngIf="showAttendance" class="center" style="color: yellow; font-weight:bold ">Absent on</div>
+    <div id="container " *ngFor="let item of att ">
+        <div class="rowdata "> {{item._id.date}} {{dayName[item.dayOfWeek-1]}}, Period : {{item.periods}}</div>
+    </div>
+    <div class="center " style="color: yellow; font-weight:bold">Exams</div>
+    <div id="container " *ngFor="let item of exams ">
+        <div class="rowdata" *ngIf="!showAttendance"> {{item.class.name}}: {{item.name}}</div>
+        <div class="rowdata" *ngIf="showAttendance"> {{item.task.name}} :- Last Date: {{item.lastdate}}</div>
+    </div>
+    <div class="center " style="color: yellow; font-weight:bold">Assignments</div>
+    <div id="container " *ngFor="let item of assignments ">
+        <div class="rowdata" *ngIf="!showAttendance"> {{item.class.name}}: {{item.name}}</div>
+        <div class="rowdata" *ngIf="showAttendance"> {{item.task.name}} :- Last Date: {{item.lastdate}}</div>
+    </div>
+    <div class="center " style="color: yellow; font-weight:bold">Fee</div>
+    <div id="container " *ngFor="let item of fees ">
+        <div class="rowdata" *ngIf="!showAttendance"> {{item.class.name}}: {{item.name}}</div>
+        <div class="rowdata" *ngIf="showAttendance"> {{item.task.name}} :- Last Date:{{item.lastdate}}</div>
+    </div>
+    <div class="center " style="color: yellow; font-weight:bold">Projects</div>
+    <div id="container " *ngFor="let item of projects ">
+        <div class="rowdata" *ngIf="!showAttendance"> {{item.class.name}}: {{item.name}}</div>
+        <div class="rowdata" *ngIf="showAttendance"> {{item.task.name}} :- Last Date: {{item.lastdate}}</div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+.edit-form {
+    min-width: 150px;
+    width: 100%;
+    /* background: whitesmoke; */
+}
+
+.field-full-width {
+    width: 100%;
+    /* background: grey;
+    color: whitesmoke; */
+}

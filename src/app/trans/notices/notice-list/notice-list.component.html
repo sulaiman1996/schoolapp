@@ -1,0 +1,46 @@
+<br>
+<div>
+    <h4>School Notice Board</h4>
+    <p></p>
+    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subject">
+            <th mat-header-cell *matHeaderCellDef> &nbsp;&nbsp;&nbsp; &nbsp; Subject </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button style="text-align: left; font-size: 13px" (click)="editStudent($event, element)">{{element.subject}}</button>
+        </ng-container>
+        <ng-container matColumnDef="body">
+            <th mat-header-cell *matHeaderCellDef> Notice </th>
+            <td mat-cell *matCellDef="let element"> {{element.body}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+        </tr>
+    </table> -->
+</div>
+
+<!-- (click)="onItemClick($event, item) -->
+<div class="card cardtitle" *ngFor="let item of notices" (click)="onItemClick($event, item)">
+    <!-- <mat-icon svgIcon="{{item.image}}"></mat-icon> -->
+    <!-- <img src="./../../assets/{{item.image}}" alt="Progress">  -->
+
+    <div id="container">
+        <!-- <div id="left"></div> -->
+        <div id="right" style="font-size: 11px">Date: {{item.date}}</div>
+        <div id="left" style="font-weight: bold ; color:gold">{{item.subject}}</div>
+    </div>
+    <p></p>
+    <div class="center" style="color: white" [innerHTML]="item.body"> </div>
+
+
+    <!-- <mat-icon svgIcon="rightarrow" style="left: 100px"></mat-icon> -->
+</div>
+
+&nbsp;&nbsp;
+<button mat-raised-button (click)="navigateBack()" color="accent">Back</button>&nbsp;
+<button (click)="newNotice()" *ngIf="!isParent" mat-raised-button color="primary">New Notice</button>

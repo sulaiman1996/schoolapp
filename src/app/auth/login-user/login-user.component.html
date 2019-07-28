@@ -1,0 +1,30 @@
+<div>
+    <br> <br>
+    <mat-card>
+        <section class="mat-typography">
+            <div>
+                <h3>User login</h3>
+            </div>
+        </section>
+        <!-- <mat-divider></mat-divider> -->
+        <br>
+        <form [formGroup]="loginForm" class="edit-form" autocomplete="off">
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="📱Mobile No" formControlName="email" required>
+                <mat-error *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+                    email/mobile is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput type="password" autocomplete="off" placeholder="🔑Password" formControlName="password" required>
+                <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-divider></mat-divider>
+            <br><br>
+            <button type="submit" (click)="loginUser()" [disabled]="loginForm.pristine || loginForm.invalid " mat-raised-button color="primary">☛Login</button>
+        </form>
+    </mat-card>
+</div>

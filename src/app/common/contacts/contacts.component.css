@@ -1,0 +1,42 @@
+/* mat-grid-tile {
+    background: lightblue;
+} */
+
+.header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/thumbup-icon.svg'); */
+    background-size: cover;
+}
+
+.card {
+    max-width: 180px;
+    max-height: 180px;
+    background: slategray;
+    margin: 4px;
+    display: block;
+    /* padding: 32px; */
+    /* border: 1px solid black; */
+    border-radius: 8px;
+}
+
+.card-designation {
+    color: white;
+    /* font-weight: bold; */
+    /* font-style: italic; */
+    font-size: 6pt;
+}
+
+.card-name {
+    color: white;
+    font-weight: bold;
+    font-size: 7pt;
+}
+
+.card-mobile {
+    color: greenyellow;
+    font-weight: bold;
+    font-size: 7pt;
+}
+
+.card:hover {
+    box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
+}

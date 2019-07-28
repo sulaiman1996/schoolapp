@@ -1,0 +1,110 @@
+<br>
+<div>
+    <h4>School Data</h4>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-form" novalidate>
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="School Code" autocomplete="off" formControlName="_id" required>
+            <mat-error *ngIf="!updateForm.controls['_id'].valid && updateForm.controls['_id'].touched">
+                School Code is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Name" autocomplete="off" formControlName="name" required>
+            <mat-error *ngIf="!updateForm.controls['name'].valid && updateForm.controls['name'].touched">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Address 1" autocomplete="off" formControlName="address1" required>
+            <mat-error *ngIf="!updateForm.controls['address1'].valid && updateForm.controls['address1'].touched">
+                Address 1 is <strong>required and allow only number</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Address 2" autocomplete="off" formControlName="address2" required>
+            <mat-error *ngIf="!updateForm.controls['address2'].valid && updateForm.controls['address2'].touched">
+                Address 2 is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="City" autocomplete="off" formControlName="city" required>
+            <mat-error *ngIf="!updateForm.controls['city'].valid && updateForm.controls['city'].touched">
+                City is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="District" autocomplete="off" formControlName="district" required>
+            <mat-error *ngIf="!updateForm.controls['district'].valid && updateForm.controls['district'].touched">
+                District is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <!-- pattern="[a-zA-Z ]*" -->
+        <mat-form-field>
+            <input matInput placeholder="State" autocomplete="off" formControlName="state" required>
+            <mat-error *ngIf="!updateForm.controls['state'].valid && updateForm.controls['state'].touched">
+                State is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Pin" autocomplete="off" formControlName="pin" required>
+            <mat-error *ngIf="!updateForm.controls['pin'].valid && updateForm.controls['pin'].touched">
+                Pin is <strong>required and numbers only</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="email" autocomplete="off" formControlName="email" required>
+            <!-- <mat-error *ngIf="!updateForm.controls['email'].valid && updateForm.controls['email'].touched">
+                    email is <strong>required</strong>
+                </mat-error> -->
+            <mat-error>
+                {{errors.email}}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Country" autocomplete="off" formControlName="country" (selectionChange)="onCountrySelection($event.value)">
+                <mat-option *ngFor="let c of countries" [value]="c">{{c.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!updateForm.controls['country'].valid && updateForm.controls['country'].touched">
+                Country is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <span><label >{{dialcode}}</label></span>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Phone" autocomplete="off" formControlName="phone" name="phone" required>
+            <mat-error *ngIf="!updateForm.controls['phone'].valid && updateForm.controls['phone'].touched">
+                Phone is <strong>required and numbers only</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Mobile" autocomplete="off" formControlName="mobile" required>
+            <!-- <mat-error *ngIf="updateForm.hasError('notProperLength')">
+                    Mobile number should of {{this.maxLength}} length
+                </mat-error> -->
+            <mat-error>
+                Mobile number should of {{this.maxLength}} length and numbers only
+            </mat-error>
+        </mat-form-field>
+        <label>Mobile number recieves OTP</label>
+
+        <mat-divider></mat-divider>
+    </form>
+</div>
+<div class="example-button-row">
+    <!-- <button mat-raised-button color="accent" routerLink="/school-class">Next</button> &nbsp; -->
+
+    <button *ngIf="showOTPBox" (click)="resendOTP()" mat-stroked-button color="primary">Resend OTP</button>&nbsp;
+    <span *ngIf="showOTPBox" style="color:black; font-size:13px">OTP</span>&nbsp;
+    <input *ngIf="showOTPBox" style="color:blue; width: 90px; text-align:center  " right placeholder="Enter OTP" autocomplete="off" [(ngModel)]="otpEntry" name="otpUserInput" required> &nbsp;
+    <button (click)="update()" [disabled]="updateForm.pristine || updateForm.invalid || disableSave" mat-raised-button color="primary">Next</button> &nbsp;
+    <span *ngIf="incorrectOTP" style="color:red; font-size: 12px">The OTP entered is incorrect.</span> &nbsp;&nbsp;
+    <!-- <button type="submit" (click)="updateStudent()" mat-raised-button color="primary">Save</button> -->
+    <span *ngIf="error !='' " style="color:red; font-size: 12px">{{error}}</span> &nbsp;&nbsp;
+</div>

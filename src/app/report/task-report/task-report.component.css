@@ -1,0 +1,94 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+h4 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.mat-button {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    min-height: 20px;
+    vertical-align: top;
+    font-size: 10px;
+    padding: 0 0;
+    margin: 0;
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+text-align: left;
+} */
+
+.my-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.my-header {
+    min-height: 64px;
+    /* padding: 2px 14px 0; */
+}
+
+table {
+    width: 100%;
+    /* border-collapse: separate; */
+    border-spacing: 0 1px;
+    margin-top: -10px;
+    /* margin-left: -10px; */
+    /* font-size: 12px; */
+    /* font-style: italic; */
+    background: slategrey;
+}
+
+.mat-header-cell {
+    background: slateblue;
+    color: yellow;
+    font-size: 9px;
+    padding: 8px 8px 8px 0;
+    /* text-align: right */
+}
+
+.mat-cell {
+    color: white;
+    font-size: 9px;
+    padding: 8px 8px 8px 0;
+    /* text-align: right */
+    /* display: flex;
+justify-content: center; */
+}
+
+
+/* td.mat-column-finished {
+    padding: 0px 18px 0;
+} */
+
+.mat-header-row,
+.mat-row {
+    height: auto;
+}
+
+
+/* th.mat-column-Gender {
+    width: 25%;
+    padding-right: 8px;
+    text-align: left;
+    font-size: 12px;
+} */

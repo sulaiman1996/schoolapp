@@ -1,0 +1,56 @@
+<br>
+<div *ngIf="showStudentCombo">
+    <form [formGroup]="form" class="edit-form">
+        <mat-form-field class="field-half-width">
+            <mat-select placeholder="Select your child" formControlName="myStudent" (selectionChange)="changedStudent($event)">
+                <mat-option *ngFor="let std of students" [value]="std">{{std.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!form.controls['myStudent'].valid && form.controls['myStudent'].touched">
+                Child is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</div>
+
+<!-- <input type="text" id="testid" name="fname" value="PMSA"> -->
+<div class="my-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8;">
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let element">{{element.task.type}}
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.task.name}}
+        </ng-container>
+        <ng-container matColumnDef="start">
+            <th mat-header-cell *matHeaderCellDef>Opened</th>
+            <td mat-cell *matCellDef="let element">{{element.start}} </td>
+        </ng-container>
+        <ng-container matColumnDef="end">
+            <th mat-header-cell *matHeaderCellDef>Last Date</th>
+            <td mat-cell *matCellDef="let element">{{element.lastdate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="finished">
+            <th mat-header-cell *matHeaderCellDef>Finished</th>
+            <td mat-cell *matCellDef="let element">{{element.assign.finished?'Yes':'No'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="finishedon">
+            <th mat-header-cell *matHeaderCellDef>Fin.On</th>
+            <td mat-cell *matCellDef="let element">{{element.assign.finishedon}} </td>
+        </ng-container>
+        <!-- <ng-container matColumnDef="closed" >
+            <th mat-header-cell *matHeaderCellDef>Closed</th>
+            <td mat-cell *matCellDef="let element">{{element.assign.closed}} </td>
+        </ng-container> -->
+        <ng-container matColumnDef="grade">
+            <th mat-header-cell *matHeaderCellDef>Grade</th>
+            <td mat-cell *matCellDef="let element">{{element.assign.grade}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+    </table>
+</div>

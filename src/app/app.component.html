@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top ">
+    <!-- fixed-top -->
+    <a class="navbar-brand" *ngIf="!this.isMobilevar" href="#">{{title}}</a>
+    <!-- <a class="navbar-brand" *ngIf="_authService.loggedIn()" routerLink="/dashboard">Home</a> -->
+    <!-- <a class="navbar-brand" *ngIf="_authService.loggedIn()" href="/dashboard">Home</a> -->
+    <!-- <form class="form-inline">
+        <button class="btn btn-outline-success" type="button">Main button</button>
+    </form> -->
+    <a class="navbar-brand" *ngIf="_authService.loggedIn()" routerLink="/dashboard" routerLinkActive="active">
+        <!-- <img src="./../../assets/home.ico" height="42" width="42" style="filter: alpha(Opacity=90);opacity: 0.9;" alt="Progress"> -->
+        <mat-icon svgIcon="home"></mat-icon>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item" *ngIf="_authService.loggedAsAdmin() || _authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/students" routerLinkActive="active">Students</a>
+            </li> -->
+            <li class="nav-item" *ngIf="_authService.loggedAsAdmin() || _authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/masters" routerLinkActive="active">Masters</a>
+            </li>
+            <li class="nav-item" *ngIf="_authService.loggedAsAdmin() || _authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/register-school" routerLinkActive="active">Register New School</a>
+                <!-- <a class="nav-link" routerLink="/school-finish" routerLinkActive="active">Register New School</a> -->
+
+            </li>
+            <li class="nav-item" *ngIf="_authService.loggedAsAdmin() || _authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/import-students" routerLinkActive="active">Import Students</a>
+            </li>
+            <!-- <li class="nav-item" *ngIf="_authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/attendance" routerLinkActive="active">Attendance</a>
+            </li>
+            <li class="nav-item" *ngIf="_authService.loggedAsTeacher() || _authService.loggedAsTeacher()">
+                <a class="nav-link" routerLink="/marksEntry" routerLinkActive="active">Mark Entry</a>
+            </li> -->
+        </ul>
+
+        <ul class="navbar-nav">
+            <a class="nav-link" *ngIf="!_authService.loggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
+            <a class="nav-link" *ngIf="_authService.loggedIn() && (_authService.loggedAsAdmin() || _authService.loggedAsTeacher())" routerLink="/register" routerLinkActive="active">Register</a>
+            <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">Logout</a>
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+
+        </ul>
+    </div>
+
+</nav>
+<br> <br>
+<!-- <button>test<span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> -->
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

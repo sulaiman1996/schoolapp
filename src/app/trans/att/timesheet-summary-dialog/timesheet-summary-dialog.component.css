@@ -1,0 +1,26 @@
+button {
+    width: 40px;
+    /* height: 30px; */
+    /* text-align: center; */
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+.mat-dialog-container {
+    /* overflow: hidden;
+    border-radius: 1px;
+    border-color: blue;
+    padding: 1px; */
+    background-color: darkslategrey;
+    color: bisque;
+}
+
+
+/* .dia-styling {
+    background-color: chocolate;
+    font-style: normal;
+} */

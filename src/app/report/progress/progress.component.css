@@ -1,0 +1,79 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+    /* font-size: 8px; */
+    font-style: italic;
+    background: slategrey;
+}
+
+td.mat-column-Month {
+    width: 25%;
+    /* padding-right: 8px; */
+    text-align: left;
+    font-size: 12px;
+}
+
+td.mat-column-Total {
+    width: 25%;
+    /* padding-right: 8px; */
+    text-align: center;
+    font-size: 12px;
+}
+
+td.mat-column-Present {
+    width: 25%;
+    /* padding-right: 8px; */
+    text-align: center;
+    font-size: 12px;
+}
+
+td.mat-column-Absent {
+    width: 25%;
+    /* padding-right: 8px; */
+    text-align: center;
+    font-size: 12px;
+}
+
+.mat-header-cell {
+    background-color: slateblue;
+    color: yellow;
+    /* font-size: large; */
+    /* font-weight: bold; */
+}
+
+.mat-input-flex.mat-form-field-flex {
+    border: 1px solid black;
+}
+
+.mat-header-row,
+.mat-row {
+    height: 25px;
+}
+
+.mat-cell {
+    color: white;
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+  text-align: left;
+} */

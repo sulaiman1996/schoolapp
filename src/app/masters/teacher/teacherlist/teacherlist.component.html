@@ -1,0 +1,9 @@
+<p></p>
+<div class="col-12">
+    <ag-grid-angular style="width: 100%;height: 400px;" class="ag-theme-balham" (gridReady)="onGridReady($event)" [columnDefs]="columnDefs" [enableSorting]="true" [enableFilter]="true" [animateRows]="true" [pagination]="true" rowSelection="single" [paginationPageSize]="10"
+        [sortingOrder]="sortingOrder" gridOptions="gridOptions" [enableColResize]="true" (rowClicked)="onRowClicked($event)">
+    </ag-grid-angular>
+</div>
+<p></p>
+&nbsp;<button mat-raised-button color="primary" routerLink="/teacherdetail/__new">Create New </button> &nbsp;
+<button mat-raised-button color="primary" routerLink="/attendance-teacher">Attendance</button>

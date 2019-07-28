@@ -1,0 +1,113 @@
+<br>
+<form [formGroup]="form" class="form">
+    <mat-form-field class="ield-3d-width">
+        <mat-select placeholder="Class" formControlName="myClass">
+            <mat-option *ngFor="let class of classes" [value]="class">{{class.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<p style="font-size: 10px;color: blue">The imported students will be updated in the selected class even if class is there in the csv file. The imported students will be updated in class in the csv file if NA is selected or no class selected </p>
+<p></p>
+<button mat-raised-button (click)="navigateBack()" color="accent">Back</button> &nbsp;
+<label for="files" class="btn">Select csv file</label>
+<input #fileUpload id="files" type="file" (change)="onFileSelect($event.target)" (click)="fileUpload.value = null" name="myfile"> &nbsp;
+<button mat-raised-button color="primary" [disabled]="this.importErrors.length>0 || this.studentImport.length==0" (click)="upload()">Upload</button>
+<!-- -->
+<p *ngIf="emptyRowCount==1" style="font-size: 10px;color: red">{{emptyRowCount}} Empty row in the imported files</p>
+<p *ngIf="emptyRowCount>1" style="font-size: 10px;color: red">{{emptyRowCount}} Empty rows in the imported files</p>
+<p *ngIf="resultOkMessage !== ''" style="font-size: 10px;color: red">{{resultOkMessage}} </p>
+<ul *ngIf="this.writeConcernErrors.length>0">
+    <li *ngFor="let err of writeConcernErrors" style="font-size: 15px;color: red">
+        {{err}}
+    </li>
+</ul>
+<ul *ngIf="this.writeErrors.length>0">
+    <li *ngFor="let err of writeErrors" style="font-size: 15px;color: red">
+        {{err}}
+    </li>
+</ul>
+<p></p>
+<!-- <div class="form-group">
+    <label for="files" class="btn">Select csv file</label>
+</div> -->
+<div *ngIf="importErrors.length>0">
+    <table mat-table [dataSource]="dataSourceError" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="AdmNo">
+            <th mat-header-cell *matHeaderCellDef>Adm No </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.AdmNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ClassNo">
+            <th mat-header-cell *matHeaderCellDef>Class No. </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.ClassNo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.Name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Error">
+            <th mat-header-cell *matHeaderCellDef> Error </th>
+            <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.Error}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsError"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsError;">
+        </tr>
+    </table>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="admNo">
+        <th mat-header-cell *matHeaderCellDef>Adm No </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.admNo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="classNo">
+        <th mat-header-cell *matHeaderCellDef>Class No </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.classNo}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="myClass">
+        <th mat-header-cell *matHeaderCellDef> Class </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.myClass}} </td>
+    </ng-container>
+    <ng-container matColumnDef="myGender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.myGender}} </td>
+    </ng-container>
+    <ng-container matColumnDef="myRelegion">
+        <th mat-header-cell *matHeaderCellDef>Religion </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.myRelegion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="myCaste">
+        <th mat-header-cell *matHeaderCellDef>Caste </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.myCaste}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> DOB </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.dob}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateOfJoin">
+        <th mat-header-cell *matHeaderCellDef> Join Date </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.dateOfJoin}} </td>
+    </ng-container>
+    <ng-container matColumnDef="parentName">
+        <th mat-header-cell *matHeaderCellDef> Parent </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.parentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="mobileNo">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.mobileNo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element" style="text-align: left; font-size: 10px"> {{element.address}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+</table>
+<p></p>

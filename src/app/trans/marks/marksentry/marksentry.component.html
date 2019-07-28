@@ -1,0 +1,92 @@
+<br>
+<form [formGroup]="form" class="form">
+    <mat-form-field class="field-half-width">
+        <mat-select placeholder="Class" formControlName="myClass" (selectionChange)="classChanged($event.value)">
+            <mat-option *ngFor="let class of classes" [value]="class._id">{{class.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!form.controls['myClass'].valid && form.controls['myClass'].touched">
+            Class is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-4d-width">
+        <mat-select placeholder="Exam" formControlName="exams" (selectionChange)="examChanged($event.value)">
+            <mat-option *ngFor="let exam of exmas" [value]="exam">{{exam.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!form.controls['exams'].valid && form.controls['exams'].touched">
+            exams is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-4d-width">
+        <mat-select placeholder="Subjects" formControlName="mySubject" (selectionChange)="classChanged($event.value)">
+            <mat-option *ngFor="let sub of subjects" [value]="sub._id">{{sub.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!form.controls['mySubject'].valid && form.controls['mySubject'].touched">
+            Subject is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-3d-width">
+        <!-- <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="dates"> -->
+        <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="dates" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="!form.controls['dates'].valid && form.controls['dates'].touched">
+            <strong>the date format dd/mm/yyyy</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-4d-width">
+        <input matInput type="number" autocomplete="off" style="text-align: center" placeholder="Max Mark" formControlName="maxMark">
+        <mat-error *ngIf="!form.controls['maxMark'].valid && form.controls['maxMark'].touched">
+            <strong>Max Mark</strong> is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field-4d-width">
+        <input matInput type="text" placeholder="Topic" formControlName="topics">
+    </mat-form-field>
+
+    <!-- <button mat-raised-button (click)="go()" [disabled]="form.invalid" color="accent">Go</button> -->
+    <button class="btn btn-warning" (click)="go()" [disabled]="form.invalid">Go</button>
+</form>
+<br>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="classNo">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.classNo}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="attendance">
+        <th mat-header-cell *matHeaderCellDef>Present
+            <!-- <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox> -->
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="onChangeCheckBox($event, i, element)" [checked]="element.attendance">
+            </mat-checkbox>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="marks">
+        <th mat-header-cell *matHeaderCellDef> Marks </th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+            <input matInput type="number" autocomplete="off" placeholder="Mark" style="text-align: center" [(ngModel)]="element.marks">
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    </tr>
+</table>
+<br>
+<button mat-raised-button (click)="navigateBack()" color="accent">Back</button> &nbsp;
+<button type="submit" (click)="update()" [disabled]="form.pristine || form.invalid " mat-raised-button color="primary">{{saveCaption}}</button> &nbsp;
+<button type="submit" (click)="delete()" [disabled]="form.pristine || form.invalid || !this.canDelete" mat-raised-button color="warn">Delete</button>
+<p style="color: blue; font-size: 11px">Note:- <strong>Save</strong>: new entry, <strong>Update</strong>: already saved can be modified,
+    <strong>Save As</strong> Copy exam mark and save as new entry
+    <strong style="color: red">Delete</strong>: delete exam mark <strong>permanently</strong>
+</p>

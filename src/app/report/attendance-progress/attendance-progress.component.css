@@ -1,0 +1,92 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+.my-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.my-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+    /* font-size: 12px; */
+    /* font-style: italic; */
+    background: slategrey;
+}
+
+.mat-header-cell {
+    background: slateblue;
+    color: yellow;
+    font-size: 12px;
+    text-align: right
+}
+
+.mat-cell {
+    color: white;
+    font-size: 12px;
+    text-align: right
+    /* display: flex;
+justify-content: center; */
+}
+
+.mat-header-row,
+.mat-row {
+    height: 25px;
+}
+
+th.mat-column-Month {
+    width: 25%;
+    padding-right: 8px;
+    text-align: left;
+    font-size: 12px;
+}
+
+td.mat-column-Month {
+    width: 25%;
+    padding-right: 8px;
+    text-align: left;
+    font-size: 12px;
+}
+
+h4 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.mat-button {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    min-height: 20px;
+    vertical-align: top;
+    font-size: 10px;
+    padding: 0 0;
+    margin: 0;
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+text-align: left;
+} */

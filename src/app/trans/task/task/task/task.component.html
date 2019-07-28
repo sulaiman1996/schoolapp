@@ -1,0 +1,146 @@
+<div>
+    <br>
+    <mat-card>
+        <section *ngIf="error ==''" class="mat-typography">
+            <div *ngIf="isSave">
+                <h3>New {{selectedType.name}}</h3>
+            </div>
+            <div *ngIf="!isSave">
+                <h3>Update {{selectedType.name}}</h3>
+            </div>
+
+        </section>
+        <mat-divider></mat-divider>
+        <h4 *ngIf="error !=''" style="font-size: 15px;color: red">{{error}}</h4>
+        <br>
+        <form [formGroup]="updateForm" *ngIf="error ==''" class="edit-form" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Type" formControlName="type" [disabled]="true">
+                    <mat-option *ngFor="let type of types" [value]="type._id">{{type.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['type'].valid && updateForm.controls['type'].touched">
+                    Type is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Description" formControlName="name" required>
+                <mat-error *ngIf="!updateForm.controls['name'].valid && updateForm.controls['name'].touched">
+                    Description is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="false" class="field-full-width">
+                <input hidden matInput formControlName="schoolid">
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="pickerstart" placeholder="Opening Date" formControlName="start" (dateInput)="changeDate('input', $event)" (dateChange)="changeDate('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="pickerstart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerstart></mat-datepicker>
+                <mat-error *ngIf="!updateForm.controls['start'].valid && updateForm.controls['start'].touched">
+                    start <strong>required and the date format dd/mm/yyyy</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="this.selectedType.amount">
+                <input matInput type="number" placeholder="Amount" formControlName="amount" (change)="onAmountChange($event.target.value)" required>
+                <mat-error *ngIf="!updateForm.controls['amount'].valid && updateForm.controls['amount'].touched">
+                    Amount is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <input matInput [matDatepicker]="pickerend1" placeholder="Close on" formControlName="end1" [errorStateMatcher]="matcher" (dateInput)="changeDate('input', $event)" (dateChange)="changeDate('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="pickerend1"></mat-datepicker-toggle>
+                <mat-datepicker #pickerend1></mat-datepicker>
+                <mat-error *ngIf="updateForm.hasError('end1Less')">
+                    Close date should be > Opening Date
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width" *ngIf="this.selectedType.amount">
+                <input matInput type="number" placeholder="Penalty After 1 Close" formControlName="penalty1" required>
+                <mat-error *ngIf="!updateForm.controls['penalty1'].valid && updateForm.controls['penalty1'].touched">
+                    Penalty After 1 Close is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width" *ngIf="!this.selectedType.singleClose">
+                <input matInput [matDatepicker]="pickerend2" placeholder="Second Close Date" formControlName="end2" [errorStateMatcher]="matcher" (dateInput)="changeDate('input', $event)" (dateChange)="changeDate('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="pickerend2"></mat-datepicker-toggle>
+                <mat-datepicker #pickerend2></mat-datepicker>
+                <mat-error *ngIf="updateForm.hasError('end2Less')">
+                    Second Close date should be > Close date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="this.selectedType.amount && !this.selectedType.singleClose">
+
+                <input matInput type="number" placeholder="Penalty After 2nd Close" formControlName="penalty2" required>
+                <mat-error *ngIf="!updateForm.controls['penalty2'].valid && updateForm.controls['penalty2'].touched">
+                    Penalty After 2nd Close is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width" *ngIf="!this.selectedType.singleClose">
+                <input matInput [matDatepicker]="pickerend3" placeholder="Third Close Date" formControlName="end3" [errorStateMatcher]="matcher" (dateInput)="changeDate('input', $event)" (dateChange)="changeDate('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="pickerend3"></mat-datepicker-toggle>
+                <mat-datepicker #pickerend3></mat-datepicker>
+                <mat-error *ngIf="updateForm.hasError('end3Less')">
+                    Third Close date should be > Second Close date
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="this.selectedType.amount && !this.selectedType.singleClose">
+                <input matInput type="number" placeholder="Penalty After 3rd Close" formControlName="penalty3" required>
+                <mat-error *ngIf="!updateForm.controls['penalty3'].valid && updateForm.controls['penalty3'].touched">
+                    Penalty After 3rd Close is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width">
+                <mat-select placeholder="Classes" formControlName="myClasses" multiple>
+                    <mat-option *ngFor="let class of classes" [value]="class">{{class.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width" *ngIf="this.subjects.length>1">
+                <mat-select placeholder="Subject" formControlName="mySubject">
+                    <mat-option *ngFor="let subject of subjects" [value]="subject._id">{{subject.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['mySubject'].valid && updateForm.controls['mySubject'].touched">
+                    Subjects is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-half-width" *ngIf="!this.selectedType.amount">
+                <input matInput type="number" placeholder="Max.Grade" formControlName="totalGrade" required>
+                <mat-error *ngIf="!updateForm.controls['totalGrade'].valid && updateForm.controls['totalGrade'].touched">
+                    Total Grade is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-half-width" *ngIf="this.selectedType.mutliView">
+                <mat-select placeholder="Can See" formControlName="canView" multiple>
+                    <mat-option *ngFor="let t of teachers" [value]="t">{{t.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!updateForm.controls['canView'].valid && updateForm.controls['canView'].touched">
+                    Can View is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-checkbox class="field-half-width" formControlName="sendSMS" (change)="updateChecked($event)">Send SMS </mat-checkbox>&nbsp;
+            <mat-checkbox class="field-half-width" formControlName="autoClose">Close automatically on due date </mat-checkbox>&nbsp;
+
+            <mat-form-field class="field-full-width">
+                <input matInput type="text" placeholder="Message text" formControlName="message" required>
+                <mat-error *ngIf="!updateForm.controls['message'].valid && updateForm.controls['message'].touched">
+                    Message is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-divider></mat-divider>
+            <label style="color: red" *ngIf="amountError!=''">{{amountError}}</label>
+            <br><br>
+            <button mat-raised-button color="accent" routerLink="/tasks/{{type}}">Back</button>&nbsp;
+            <!-- <button (click)="studentList()" [disabled]="updateForm.dirty" mat-stroked-button color="primary">Student List</button>&nbsp; -->
+            <button type="submit" (click)="studentList()" [disabled]=" updateForm.invalid " mat-raised-button color="primary">Next</button>
+        </form>
+    </mat-card>
+</div>

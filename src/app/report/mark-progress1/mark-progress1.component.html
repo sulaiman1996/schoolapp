@@ -1,0 +1,50 @@
+<div>
+    <br>
+    <form [formGroup]="form" class="edit-form">
+        <mat-form-field class="field-half-width" *ngIf="showStudentCombo">
+            <mat-select placeholder="Select your child" formControlName="myStudent" (selectionChange)="changedStudent($event)">
+                <mat-option *ngFor="let std of students" [value]="std">{{std.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="!form.controls['myStudent'].valid && form.controls['myStudent'].touched">
+                Child is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</div>
+<div>
+    <h4 style="text-align: center;">{{this.student.name}}</h4>
+</div>
+<div style="margin-bottom: 15px;">
+    <h5 class="labstyle">Marks</h5>
+</div>
+<div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container *ngFor="let disCol of displayedColumns; let colIndex = index" matColumnDef="{{disCol}}">
+            <th mat-header-cell [ngClass]="(largeCol)?'mat-header-cell-small':'mat-header-cell-large'" *matHeaderCellDef>{{disCol}}</th>
+            <td mat-cell [ngClass]="(largeCol)?'mat-cell-small':'mat-cell-large'" *matCellDef="let element "> {{element[disCol]}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<div>
+    <p></p>
+    <mat-divider></mat-divider>
+    <mat-button-toggle-group style="font-size: 13px;height: 30px; " #group="matButtonToggleGroup" name="chartStyle" aria-label="Chart Style" [value]="barChartType" (change)="onValChange(group.value)">
+        <mat-button-toggle value="bar">Bar Chart</mat-button-toggle>
+        <mat-button-toggle value="line">Line Chart</mat-button-toggle>
+    </mat-button-toggle-group> &nbsp;
+    <h5 style="display: inline-block">In percentage</h5>
+    <div style="display: block" *ngFor="let item of barChartData; let i = index">
+        <!-- <h5 class="labstyle">{{barChartCaptions[i]}}</h5> -->
+        <canvas baseChart [datasets]="barChartData[i]" [labels]="barChartLabels[0]" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" [colors]="colors" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <p></p>
+    <button mat-raised-button (click)="navigateBack()" color="accent">Back</button> &nbsp;
+
+
+</div>

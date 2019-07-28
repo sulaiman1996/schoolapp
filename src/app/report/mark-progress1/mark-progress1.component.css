@@ -1,0 +1,106 @@
+.field-full-width {
+    width: 100%;
+}
+
+.field-half-width {
+    width: 50%;
+    /* align-content: space-around; */
+}
+
+.field-3d-width {
+    width: 33%;
+}
+
+.field-4d-width {
+    width: 25%;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: -10px;
+    /* font-size: 8px; */
+    /* font-style: italic; */
+    background: slategrey;
+}
+
+
+/*td.mat-column {
+width: 25%;
+padding-right: 8px;
+text-align: left;
+font-size: 12px;
+}*/
+
+.mat-header-cell-small {
+    background-color: slateblue;
+    color: yellow;
+    /* font-size: large; */
+    /* font-weight: bold; */
+    font-style: italic;
+    font-size: 10px;
+}
+
+.mat-header-cell-large {
+    background-color: slateblue;
+    color: yellow;
+    /* font-size: large; */
+    /* font-weight: bold; */
+    font-style: italic;
+    font-size: 11px;
+}
+
+.mat-input-flex.mat-form-field-flex {
+    border: 1px solid black;
+}
+
+.mat-header-row,
+.mat-row {
+    height: 25px;
+}
+
+.mat-cell-large {
+    color: white;
+    font-size: 11px;
+}
+
+.mat-cell-small {
+    color: white;
+    font-size: 10px;
+}
+
+h4 {
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+h5 {
+    color: yellow;
+    font-size: 15px;
+    text-align: center;
+    /* text-decoration: underline; */
+    text-underline-position: under;
+    /* padding-bottom: 9px; */
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.mat-button {
+    width: 80px;
+    height: 30px;
+    /* line-height: 20px;
+  min-height: 40px;
+  vertical-align: top;
+  font-size: 12px;
+  padding: 0 0; */
+    /* margin: 0;
+  background-color: ;
+  color: blue; */
+}
+
+
+/* .mat-button,
+.mat-raised-button {
+text-align: left;
+} */

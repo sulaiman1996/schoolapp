@@ -1,0 +1,78 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <div>
+                <h5>{{header}}</h5>
+            </div>
+        </section>
+        <!-- <mat-divider></mat-divider> -->
+        <br>
+        <form [formGroup]="loginForm" class="edit-form">
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="School Code" formControlName="schoolid" [disabled]>
+                <mat-error *ngIf="!loginForm.controls['schoolid'].valid && loginForm.controls['schoolid'].touched">
+                    School Code is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Email/Mobile No" formControlName="email" required>
+                <mat-error *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched">
+                    email/mobile is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-select placeholder="Parent" formControlName="parent">
+                    <mat-option *ngFor="let p of parents" [value]="p">{{p}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!loginForm.controls['parent'].valid && loginForm.controls['parent'].touched">
+                    Parent is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="User Type" formControlName="userType" [disabled]="parentLogged">
+                    <mat-option *ngFor="let p of userTypes" [value]="p">{{p}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!loginForm.controls['userType'].valid && loginForm.controls['userType'].touched">
+                    User Type is <strong>required</strong>
+                </mat-error>
+
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input matInput type="password" placeholder="{{passwordLabel}}" formControlName="password" [errorStateMatcher]="matcher" required>
+                <!-- <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                    Password is <strong>required</strong>
+                </mat-error> -->
+                <mat-error *ngIf="loginForm.hasError('notSameOld')">
+                    Old password does not match
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="field-full-width" *ngIf="edit">
+                <input matInput type="password" placeholder="New Password" formControlName="newPassword" required>
+                <mat-error *ngIf="loginForm.hasError('required', 'newPassword')">
+                    Please enter your new password
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="field-full-width" *ngIf="edit">
+                <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="loginForm.hasError('notSame')">
+                    Passwords do not match
+                </mat-error>
+            </mat-form-field>
+
+
+
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button (click)="navigateBack()" color="accent">Back</button>&nbsp;
+            <button type="submit" (click)="registerUser()" *ngIf="!edit" [disabled]="loginForm.pristine || loginForm.invalid " mat-raised-button color="primary">Register</button>
+            <button type="submit" (click)="registerUser()" *ngIf="edit" [disabled]="loginForm.pristine || loginForm.invalid " mat-raised-button color="primary">Update</button>
+
+        </form>
+    </mat-card>
+</div>

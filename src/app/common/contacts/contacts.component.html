@@ -1,0 +1,30 @@
+<p></p>
+<!-- <mat-card class="example-card"></mat-card> -->
+<!-- <div class="card cardtitle" *ngFor="let item of teachers" (click)="onItemClick($event, item)"> -->
+<!-- <mat-icon svgIcon="{{item.image}}"></mat-icon> -->
+<!-- <img src="./../../assets/{{item.image}}" alt="Progress">  -->
+<!-- <div mat-card-avatar class="example-header-image"></div> -->
+
+<!-- <mat-card-title>{{item.name}}</mat-card-title> -->
+<!-- <mat-icon svgIcon="rightarrow" style="left: 100px"></mat-icon> -->
+<!-- </div> -->
+
+
+<mat-grid-list cols="2">
+    <mat-grid-tile *ngFor="let item of teachers; index as i">
+        <mat-card class="card">
+            <mat-card-header>
+                <!-- <mat-icon>more_vert</mat-icon> -->
+                <!-- <div mat-card-avatar style="background-image: url('http://localhost:8080/static/uploads/teacher-photo-1559636277543.jpg');" class="example-header-image"></div> -->
+                <div mat-card-avatar [ngStyle]="applyStyles(item)" class="header-image"></div>
+                <mat-card-title class="card-name">{{item.name}}</mat-card-title>
+                <!-- <img mat-card-image style="max-height: 150px;max-height: 200px" src="{{teacherPhot(item)}}" alt="Photo of a Shiba Inu"> -->
+                <mat-card-subtitle class="card-designation">{{item.designation}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="card-mobile">Mobile: {{item.mobileNo}}</mat-card-content>
+            <!-- <mat-card-footer style="align-content: center ">
+        {{item.mobileNo}}
+    </mat-card-footer> -->
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
