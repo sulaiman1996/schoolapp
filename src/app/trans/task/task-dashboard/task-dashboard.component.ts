@@ -35,15 +35,15 @@ export class TaskDashboardComponent implements OnInit {
     onItemClick(event, item) {
       console.log(item)
       switch (item.title){
-        case 'Exams': this.router.navigate([`/tasks/EXAM`]);
+        case 'Exams': this.router.navigate([`/task-dashboard/EXAM`]);
               break;
-        case 'Assignments': this.router.navigate([`/tasks/ASGT`]);
+        case 'Assignments': this.router.navigate([`/task-dashboard/ASGT`]);
               break;
-        case 'Impositions': this.router.navigate([`/tasks/IMP`]);
+        case 'Impositions': this.router.navigate([`/task-dashboard/IMP`]);
               break;
-        case 'Projects': this.router.navigate([`/tasks/PRJ`]);
+        case 'Projects': this.router.navigate([`/task-dashboard/PRJ`]);
               break;
-        case 'Fees': this.router.navigate([`/tasks/FEE`]);
+        case 'Fees': this.router.navigate([`/task-dashboard/FEE`]);
               break;
       }
     }

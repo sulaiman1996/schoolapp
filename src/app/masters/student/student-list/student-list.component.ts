@@ -136,10 +136,10 @@ export class StudentListComponent implements OnInit {
     this.location.back();
   }
   editStudent(event, item) {
-    this.router.navigate([`/studentdetail/${item.students}`]);
+    this.router.navigate([`/students/${item.students}`]);
   }
   addStudent() {
-    this.router.navigate([`/studentdetail/__new`]);
+    this.router.navigate([`/students/__new`]);
   }
   attendanceClick(event, item){
      console.log(item);

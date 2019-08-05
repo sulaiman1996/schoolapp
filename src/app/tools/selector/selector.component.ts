@@ -26,7 +26,7 @@ export class SelectorComponent implements OnInit {
   constructor(
     private masterService: MasterService, private fb: FormBuilder, private router: Router, private datePipe: DatePipe) {
     this.createForm();
-    this.message = this.masterService.selectorMessage
+    this.message = this.masterService.selectorMessage;
     this.showMessage = ! (this.message === '');
   }
   createForm() {

@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
-import * as myGlobals from '../../global'; //<==== this one
+import * as myGlobals from '../../global';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'

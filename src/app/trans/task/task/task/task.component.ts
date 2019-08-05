@@ -101,6 +101,7 @@ export class TaskComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.type = params.type;
+      console.log(this.id, this.type);
       this.taskService.getMastersForTask(localStorage.getItem('userid'))
       .subscribe((resMasters) => {
         if (resMasters.teacher) {
@@ -309,7 +310,7 @@ export class TaskComponent implements OnInit {
     // console.log(this.selected);
     this.taskService.setTaskData('task', this.selected);
     this.taskService.setTaskType(this.type);
-    this.router.navigate([`/student-task`]);
+    this.router.navigate([`/task-dashboard/${this.type}/student-task`]);
   }
 }
 

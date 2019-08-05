@@ -45,6 +45,7 @@ export class TaskListComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.type = params.type;
+      console.log(this.type);
       this.fillData(false);
     });
   }
@@ -60,12 +61,12 @@ export class TaskListComponent implements OnInit {
   }
   add() {
     this.taskService.taskData.task = null;
-    this.router.navigate([`/task/${this.type}/__new`]);
+    this.router.navigate([`/task-dashboard/${this.type}/__new`]);
   }
   edit(event, item) {
     console.log(item);
     this.taskService.taskData.task = null;
-    this.router.navigate([`/task/${this.type}/${item._id}`]);
+    this.router.navigate([`/task-dashboard/${this.type}/${item._id}`]);
   }
   navigateBack() {
     // this.location.back();

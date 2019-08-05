@@ -64,7 +64,7 @@ export class NoticeListComponent implements OnInit {
   }
   newNotice(){
     if (!this.isParent){
-      this.router.navigate([`/notice/__new`]);
+      this.router.navigate([`/noticelist/__new`]);
     }
   }
 }

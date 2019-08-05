@@ -100,7 +100,7 @@ export class TeacherListComponent implements OnInit {
     this.location.back();
   }
   editTeacher(event, item) {
-    this.router.navigate([`/teacherdetail/${item.teacher}`]);
+    this.router.navigate([`/teachers/${item.teacher}`]);
   }
   attendanceClick(event, item){
     // console.log(item);
