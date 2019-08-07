@@ -14,12 +14,6 @@ import { AuthGuardRoles } from './auth/service/auth.guard.roles';
 import { TokenInterceptorService } from './auth/service/token-interceptor.service';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
-// import { LoginUserComponent } from './auth/login-user/login-user.component';
-// import { SelectorComponent } from './tools/selector/selector.component';
-// import { DashboardComponent } from './common/dashboard/dashboard.component';
-// import { DatePipe } from '@angular/common';
-
-// import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule,
@@ -36,9 +30,6 @@ import { MatIconModule,
 @NgModule({
   declarations: [
     AppComponent,
-    // LoginUserComponent,
-    // SelectorComponent,
-    // DashboardComponent,
   ],
   imports: [
     BrowserModule,
